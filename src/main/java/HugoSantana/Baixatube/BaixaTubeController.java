@@ -34,9 +34,9 @@ public class BaixaTubeController {
 
         }
 
-    } @GetMapping("/download/{filename}")
+    } @PostMapping("/download/{filename}")
     public void downloadArquivo(@PathVariable String filename, HttpServletResponse response) throws IOException{
-        File file = new File("downloads/" + filename);
+        File file = new File("download/" + filename);
         if (file.exists()){
             response.setContentType("application/octet-stream");
             response.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
@@ -51,7 +51,7 @@ public class BaixaTubeController {
         } else {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
-        
+
     }
 
 
